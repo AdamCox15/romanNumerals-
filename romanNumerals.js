@@ -74,3 +74,89 @@ const integer_to_roman =(num) =>{
 }
 
 console.log(integer_to_roman(4));
+
+//-----------------------------------------------------------------------------
+const romanConverts = (num) => {
+    let num2 = num
+    let push = Math.floor(num / 1000)
+    let numStr = ""
+    for (i = 0; i < push; ++i) {
+      numStr = numStr + 'M'
+    }
+    num = num % 1000
+  
+    let push2 = Math.floor(num / 500)
+    for (i = 0; i < push2; ++i) {
+      numStr = numStr + 'D'
+    }
+    num = num % 500
+  
+    num
+    let push3 = Math.floor(num / 100)
+    for (i = 0; i < push3; ++i) {
+      numStr = numStr + 'C'
+    }
+    num = num % 100
+  
+    let push4 = Math.floor(num / 50)
+    for (i = 0; i < push4; ++i) {
+      numStr = numStr + 'L'
+    }
+    num = num % 50
+  
+    let push5 = Math.floor(num / 10)
+    for (i = 0; i < push5; ++i) {
+      numStr = numStr + 'X'
+    }
+    num = num % 10
+  
+    let push6 = Math.floor(num / 5)
+    for (i = 0; i < push6; ++i) {
+      numStr = numStr + 'V'
+    }
+    num = num % 5
+  
+    let push7 = Math.floor(num / 1)
+    for (i = 0; i < push7; ++i) {
+      numStr = numStr + 'I'
+    }
+    num = num % 1
+  
+    return numStr
+  }
+  
+  console.log(romanConverts(600))
+
+  //----------------------------------------
+  const toRoman = (num) => {
+    // set an empty variable string that holds roman numeral
+    let roman = ""
+    
+    //create a list with key of the roman numerals and their number counterparts
+    let romanList = {M: 1000, D: 500, C: 100, L: 50, X: 10, V: 5, I: 1};
+    
+      //loop through each key in the roman numeral list
+      for(let key in romanList){
+    
+      //divide the number by the number at the roman list key
+      //then use Math.floor to remove extra digits and continue looping until out of digits
+      let numeral = Math.floor(num / romanList[key]);
+    
+        //check if numeral is greater than 0
+        if(numeral >= 0) {
+    
+          // loop and push the numeral key(symbol) into "roman" variable
+          for(let i=0; i < numeral; i++){
+            roman += key
+          }
+        }
+        // breaking down the number to get the remainder to keep breaking that down
+        num = num % romanList[key]
+        console.log(num)
+    
+      }
+        //return variable string with symbols
+      return roman;
+    }
+    
+    console.log(toRoman(2564))
